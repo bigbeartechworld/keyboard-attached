@@ -1,0 +1,47 @@
+{
+  "name": "bigbeartechworld-keyboard-attached",
+  "version": "1.0.0",
+  "description": "Ionic 2 component for a social network comment system",
+  "main": "./dist/es2015/keyboard-attached.js",
+  "typings": "./dist/es2015/keyboard-attached.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "node_modules/.bin/ngc && copyfiles ./src/*.scss ./dist/es2015/ && ngc -p tsconfig.umd.json && copyfiles ./src/*.scss ./dist/umd/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigbeartechworld/keyboard-attached.git"
+  },
+  "keywords": [
+    "ionic2",
+    "ionic3",
+    "keyboard"
+  ],
+  "author": "Big Bear Tech World",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bigbeartechworld/keyboard-attached/issues"
+  },
+  "homepage": "https://github.com/bigbeartechworld/keyboard-attached#readme",
+  "devDependencies": {
+    "@angular/common": "4.1.3",
+    "@angular/compiler": "4.1.3",
+    "@angular/compiler-cli": "4.1.3",
+    "@angular/core": "4.1.3",
+    "@angular/forms": "4.1.3",
+    "@angular/http": "4.1.3",
+    "@angular/platform-browser": "4.1.3",
+    "@angular/platform-browser-dynamic": "4.1.3",
+    "@angular/platform-server": "4.1.3",
+    "ionic-angular": "3.6.0",
+    "@ionic-native/core": "3.12.1",
+    "@ionic-native/keyboard": "^4.2.0",
+    "rxjs": "5.4.0",
+    "zone.js": "0.8.12",
+    "typescript": "~2.3.4",
+    "copyfiles": "1.0.0"
+  },
+  "peerDependencies": {
+    "ionic-angular": "~3.6.0"
+  }
+}
