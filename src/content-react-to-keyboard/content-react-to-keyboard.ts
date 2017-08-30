@@ -7,6 +7,7 @@ import { Keyboard } from "@ionic-native/keyboard";
 })
 export class ContentReactToKeyboardDirective {
   @Input("content") public content: Content;
+  @Input() scrollToBottom: boolean = true;
   public showKeyboard;
   public hideKeyboard;
   private defaultHeight: number;
@@ -33,7 +34,9 @@ export class ContentReactToKeyboardDirective {
 
           this.el.nativeElement.style.paddingBottom = res.keyboardHeight.toString() + "px";
 
-          this.content.scrollToBottom();
+          if (this.scrollToBottom) {
+            this.content.scrollToBottom();
+          }
         });
 
       this.hideKeyboard = this.keyboard.onKeyboardHide().subscribe(res => {
@@ -44,7 +47,9 @@ export class ContentReactToKeyboardDirective {
       });
     } else if (this.platform.is('android')) {
       this.showKeyboard = this.keyboard.onKeyboardShow().subscribe(res => {
-        this.content.scrollToBottom();
+        if (this.scrollToBottom) {
+          this.content.scrollToBottom();
+        }
       });
 
       this.hideKeyboard = this.keyboard.onKeyboardHide().subscribe(res => {
