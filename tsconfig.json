@@ -25,8 +25,7 @@
         "keyboard-attached.ts",
         "src/autosize/autosize.ts",
         "src/content-react-to-keyboard/content-react-to-keyboard.ts",
-        "src/react-to-keyboard/react-to-keyboard.ts",
-        "src/module.ts"
+        "src/react-to-keyboard/react-to-keyboard.ts"
     ],
     "angularCompilerOptions": {
         "strictMetadataEmit": true,
