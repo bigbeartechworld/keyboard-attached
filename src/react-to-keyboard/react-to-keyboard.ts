@@ -1,4 +1,10 @@
-import { Directive, ElementRef, Renderer, ViewChild } from "@angular/core";
+import {
+  Directive,
+  ElementRef,
+  Renderer,
+  ViewChild,
+  Input
+} from "@angular/core";
 import { Platform, Events } from "ionic-angular";
 import { Keyboard } from "@ionic-native/keyboard";
 
@@ -6,6 +12,7 @@ import { Keyboard } from "@ionic-native/keyboard";
   selector: "[react-to-keyboard]" // Attribute selector
 })
 export class ReactToKeyboardDirective {
+  @Input() hasTab: boolean;
   public showKeyboard;
   public hideKeyboard;
   private defaultHeight: number;
@@ -26,19 +33,14 @@ export class ReactToKeyboardDirective {
       this.defaultPaddingBottom = this.el.nativeElement.style.paddingBottom;
 
       this.showKeyboard = this.keyboard.onKeyboardShow().subscribe(res => {
-        // if (this.keyboardIsShowing) {
-        //   // Ensure iOS didn't resize the body element randomly... ><
-        //   this.renderer.setElementStyle(
-        //     this.el.nativeElement.parentElement,
-        //     "height",
-        //     this.defaultHeight + "px"
-        //   );
-        //   return;
-        // }
         this.keyboardIsShowing = true;
 
-        this.el.nativeElement.style.paddingBottom =
-          res.keyboardHeight.toString() + "px";
+        let keyboardHeight = res.keyboardHeight;
+        if (this.hasTab) {
+          keyboardHeight = keyboardHeight - 49;
+        }
+
+        this.el.nativeElement.style.paddingBottom = keyboardHeight.toString() + "px";
         // this.el.nativeElement.style.paddingTop = "3rem";
 
         this.events.publish("react-to-keyboard:padding-added");
